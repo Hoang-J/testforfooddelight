@@ -108,3 +108,5 @@
 {"body":{},"endpoint":"/menu","ip":"::ffff:127.0.0.1","level":"info","method":"GET","pathParameters":{"0":"menu"},"query":{"all":""},"service":"user-service","timestamp":"Sun, 28 Apr 2024 02:52:24 GMT"}
 {"body":{"menuitem":"Togarashi Fries","userName":"dannywashere"},"endpoint":"/order","ip":"::ffff:127.0.0.1","level":"info","method":"POST","pathParameters":{"0":"order"},"query":{},"service":"user-service","timestamp":"Sun, 28 Apr 2024 02:52:43 GMT"}
 {"body":{},"endpoint":"/menu","ip":"::ffff:127.0.0.1","level":"info","method":"GET","pathParameters":{"0":"menu"},"query":{"all":""},"service":"user-service","timestamp":"Sun, 28 Apr 2024 02:52:44 GMT"}
+{"body":{},"endpoint":"/menu","ip":"::ffff:127.0.0.1","level":"info","method":"GET","pathParameters":{"0":"menu"},"query":{"all":""},"service":"user-service","timestamp":"Sun, 28 Apr 2024 02:54:57 GMT"}
+{"body":{},"endpoint":"/menu","ip":"::ffff:127.0.0.1","level":"info","method":"GET","pathParameters":{"0":"menu"},"query":{"all":""},"service":"user-service","timestamp":"Sun, 28 Apr 2024 02:54:59 GMT"}

@@ -1,5 +1,5 @@
 
-fetch('http://localhost:3000/menu?all')
+fetch('/menu?all')
 .then((response) => response.json())
 .then((data) => {
     for (let i=0; i< data.length; i++){
@@ -54,7 +54,7 @@ form.addEventListener('submit', () => {
     const data = new FormData(form);
     const url = new URLSearchParams(data).toString();
 
-    fetch('http://localhost:3000/order', {
+    fetch('/order', {
         method: "POST", 
         body: url,
         headers: {
