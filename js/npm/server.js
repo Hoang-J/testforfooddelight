@@ -9,7 +9,7 @@ const express = require('express');
 const app = express();
 // path lets us work with directories and file paths
 // lets us redirect to our html files from this server file based on their paths
-const path = require('path');
+// const path = require('path');
 // bcrypt 
 const bcrypt = require('bcrypt');
 
@@ -86,21 +86,21 @@ GET endpoints
   GET endpoints for serving static HTML files (delivering HTML files) for redirecting different endpoints
 */
 
-app.get('/homepage', function(req, res) {
-  res.sendFile(path.join(__dirname, '../../Restaurant', 'restaurant.html'));
-});
+// app.get('/homepage', function(req, res) {
+//   res.sendFile(path.join(__dirname, '../../Restaurant', 'restaurant.html'));
+// });
 
-app.get('/loginpage', function(req, res) {
-  res.sendFile(path.join(__dirname, '../../Login', 'logform.html'));
-});
+// app.get('/loginpage', function(req, res) {
+//   res.sendFile(path.join(__dirname, '../../Login', 'logform.html'));
+// });
 
-app.get('/registerpage', function(req, res) {
-  res.sendFile(path.join(__dirname, '../../Registration', 'regform.html'));
-});
+// app.get('/registerpage', function(req, res) {
+//   res.sendFile(path.join(__dirname, '../../Registration', 'regform.html'));
+// });
 
-app.get('/forgotpassword', function(req, res) {
-  res.sendFile(path.join(__dirname, '../../ForgotPass', 'forgotPass.html')); 
-});
+// app.get('/forgotpassword', function(req, res) {
+//   res.sendFile(path.join(__dirname, '../../ForgotPass', 'forgotPass.html')); 
+// });
 
 /*
 Endpoint:
@@ -138,11 +138,11 @@ app.get('/login', async (req, res) => {
       }
       // Redirect customer to the main restaurant page if account exists
       if(usernameFound === true) {
-        return res.redirect("/homepage");
+        return res.redirect("https://food-delight-test.vercel.app/index.html");
       }
       // Redirect customer to the registration page if account does not exists
       else if(usernameFound === false) {
-        return res.redirect("/registerpage");
+        return res.redirect("https://food-delight-test.vercel.app/Registration/regform.html");
       }
     } 
   }
@@ -255,7 +255,7 @@ app.post('/register', async function(req, res) {
         }
       }
       if(userExist === true) {
-        return res.redirect("/loginpage");
+        return res.redirect("https://food-delight-test.vercel.app/Login/logform.html");
       }
       else if(userExist === false) {
         const password = await bcrypt.hash(req.body.password, 10);
@@ -267,7 +267,7 @@ app.post('/register', async function(req, res) {
 
         await db.none('INSERT INTO login(username, password, email, street_number, street_name, city, zipcode, phone_number) VALUES($1, $2, $3, $4, $5, $6, $7, $8)', [req.body.userName, password, req.body.email, streetNumber, streetName, city, zipcode, phoneNumber]);
         // alert("Successfully signed up!");
-        return res.redirect("/loginpage");
+        return res.redirect("https://food-delight-test.vercel.app/Login/logform.html");
       }
   
     } 
@@ -305,11 +305,11 @@ app.post('/order', async function(req, res) {
       await db.none('DROP TABLE IF EXISTS complete_customer_order');
       await db.none('CREATE TABLE complete_customer_order AS SELECT customerorder.order_number, customerorder.username, food.food_type, customerorder.food_name, food.food_price FROM customerorder INNER JOIN food ON customerorder.food_name = food.food_name')
       // If successfully ordered, will redirect to the main restaurant page
-      return res.redirect("/loginpage");
+      return res.redirect("https://food-delight-test.vercel.app/index.html");
     }
     // If customer username does not exist, will redirect to the login page
     else if(userExist === false) {
-      return res.redirect("https://personalwebsite-v2-green.vercel.app/");
+      return res.redirect("https://food-delight-test.vercel.app/Login/logform.html");
     }
   }
 
@@ -349,8 +349,8 @@ app.patch('/forgotpassword', async (req, res) => {
     }
     else {
       await db.oneOrNone("UPDATE login SET password = 'Password has been changed per user request' WHERE email = $1", req.body.email)
-      res.json("Password Updated");
-      // return res.redirect("http://localhost:3000/homepage");
+      // res.json("Password Updated");
+      return res.redirect("https://food-delight-test.vercel.app/index.html");
     }
   }
      
