@@ -1,5 +1,5 @@
 
-fetch('/menu?all')
+fetch('http://localhost:3000/menu?all')
 .then((response) => response.json())
 .then((data) => {
     for (let i=0; i< data.length; i++){
@@ -41,7 +41,7 @@ fetch('/menu?all')
 
 // Pop up to show message after customer places an order
 function popup() {
-    alert("Order Placed!");
+    alert("Order Placed! (If you have an account)");
 }
 
 // Gathers the form data and converts the URL, which contains the customer request data, into strings
@@ -54,7 +54,7 @@ form.addEventListener('submit', () => {
     const data = new FormData(form);
     const url = new URLSearchParams(data).toString();
 
-    fetch('/order', {
+    fetch('http://localhost:3000/order', {
         method: "POST", 
         body: url,
         headers: {
